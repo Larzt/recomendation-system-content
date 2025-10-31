@@ -2,6 +2,8 @@
  * Utilities to build a simple term index / term-frequency vector from a document
  */
 
+import { CLEAN_WORD_REGEX } from '@/constants'
+
 /** Resultado por término */
 export interface TermInfo {
   /** índice de la primera aparición en el vector original */
@@ -18,7 +20,7 @@ export interface TermInfo {
 function normalize(word: string): string {
   if (!word) return word;
   let w = word.trim().toLowerCase();
-  w = w.replace(/^[^A-Za-z0-9áéíóúüñÁÉÍÓÚÜÑ]+|[^A-Za-z0-9áéíóúüñÁÉÍÓÚÜÑ]+$/g, "");
+  w = w.replace(CLEAN_WORD_REGEX, "");
   return w;
 }
 
@@ -65,5 +67,3 @@ export function computeTermFrequencies(words: string[]): TermInfo[] {
   result.sort((a, b) => b.count - a.count);
   return result;
 }
-
-export default computeTermFrequencies;
