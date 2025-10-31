@@ -85,3 +85,5 @@ export function processText(text: string): string[] {
 
 	return out;
 }
+
+export default processText;
