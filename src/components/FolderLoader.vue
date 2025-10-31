@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useFilesStore } from '@/stores'
 import { toIFile } from '@/utils'
+import { processText } from '@/utils/processText'
 
 const store = useFilesStore()
 const selectedFileContent = ref<string>('')
@@ -21,7 +22,9 @@ async function handleFiles(event: Event | DragEvent) {
 }
 
 function readFile(file: IFile) {
-  selectedFileContent.value = file.content
+  // selectedFileContent.value = file.content
+  let content_divided: string[] = processText(selectedFileContent.value)
+  content_divided = file.content as string[]
 }
 </script>
 
