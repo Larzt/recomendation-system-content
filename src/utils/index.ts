@@ -1,1 +1,1 @@
-export { toIFile } from './toIFile.ts'
+export { directoriesFilesToIFile, fileToIFile } from './fileConvertors.ts'

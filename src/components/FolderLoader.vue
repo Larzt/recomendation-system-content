@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useFilesStore } from '@/stores'
-import { toIFile } from '@/utils'
+import { directoriesFilesToIFile } from '@/utils'
 import { processText } from '@/utils/processText'
 
 const store = useFilesStore()
@@ -17,7 +17,7 @@ async function handleFiles(event: Event | DragEvent) {
   if (!files) return
 
   const fileArray = Array.from(files)
-  const converted = await Promise.all(fileArray.map(file => toIFile(file)))
+  const converted = await Promise.all(fileArray.map(file => directoriesFilesToIFile(file)))
   store.setDocuments(converted)
 }
 

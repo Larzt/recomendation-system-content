@@ -1,10 +1,9 @@
 import { defineStore } from 'pinia'
-
 export const useFilesStore = defineStore('files', {
   state: () => ({
     documents: [] as IFile[],
-    stopWords: [] as IFile[],
-    corpus: [] as IFile[]
+    stopWords: {} as IFile,
+    corpus: {} as IFile
   }),
 
   getters: {
@@ -15,10 +14,10 @@ export const useFilesStore = defineStore('files', {
     setDocuments(documents: IFile[]) {
       this.documents = documents
     },
-    setStopWords(stopWords: IFile[]) {
+    setStopWords(stopWords: IFile) {
       this.stopWords = stopWords
     },
-    setCorpus(corpus: IFile[]) {
+    setCorpus(corpus: IFile) {
       this.corpus = corpus
     },
   }

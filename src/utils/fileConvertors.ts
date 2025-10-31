@@ -1,0 +1,25 @@
+export function directoriesFilesToIFile(file: File): Promise<IFile> {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      resolve({
+        name: file.webkitRelativePath ?? file.name,
+        content: e.target?.result as string
+      })
+    }
+    reader.readAsText(file)
+  })
+}
+
+export function fileToIFile(file: File): Promise<IFile> {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      resolve({
+        name: file.name,
+        content: e.target?.result as string
+      })
+    }
+    reader.readAsText(file)
+  })
+}
