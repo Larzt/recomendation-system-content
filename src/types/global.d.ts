@@ -1,9 +1,10 @@
 declare global {
   // Here goes types and interfaces
-  interface File {
-    path: string;
+  interface IFile {
+    name: string;
     content: string;
   }
+  
 }
 
 export {}

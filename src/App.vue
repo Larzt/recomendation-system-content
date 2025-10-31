@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { FolderLoader, StopWordsLoader, CorpusLoader } from '@/components'
 </script>
 
 <template>
-    <HelloWorld msg="You did it!" />
+    <FolderLoader />
+    <StopWordsLoader />
+    <CorpusLoader />
 </template>
 
 <style scoped lang="scss">
