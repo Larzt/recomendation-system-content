@@ -4,6 +4,8 @@
  * Si no existe, devuelve la palabra normalizada (trim + toLowerCase).
  */
 
+import { useFilesStore } from "@/stores";
+
 // Mapa de ejemplo. En producción puedes cargar un fichero JSON más completo.
 // TODO: cargar desde un archivo externo, y guardar las lemas en un vector global o en el store
 const LEMMAS: Record<string, string> = {
@@ -40,16 +42,15 @@ export function lematize(word: string): string {
  * @returns true si la palabra es una stopword
  */
 export function isStopWord(word: string): boolean {
-  //TODO: guardar las stopwords en un archivo aparte y que se guarden como vector global o en el store
-  const defaultStopWords = [
-    "a", "an", "the", "and", "but", "or", "for", "to", "in", "on", "at", "of", "by", "with"
-  ];
-  const list = defaultStopWords;
+  //usa la lista de stopwords del store
+  // TODO: revisar esto
+  const stopWords = useFilesStore().stopWords;
+  const list = stopWords;
   if (!word) return false;
   return list.indexOf(word) !== -1;
 }
 
-// fucntion normalize
+// función normalize
 export function normalize(word: string): string {
   if (!word) return word;
   let w = word.trim().toLowerCase();
