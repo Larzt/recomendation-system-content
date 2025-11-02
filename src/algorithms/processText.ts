@@ -5,6 +5,7 @@
  */
 
 import { useFilesStore } from "@/stores";
+import { normalize } from '@/utils'
 
 // Mapa de ejemplo. En producción puedes cargar un fichero JSON más completo.
 // TODO: cargar desde un archivo externo, y guardar las lemas en un vector global o en el store
@@ -50,14 +51,6 @@ export function isStopWord(word: string): boolean {
   return list.indexOf(word) !== -1;
 }
 
-// función normalize
-export function normalize(word: string): string {
-  if (!word) return word;
-  let w = word.trim().toLowerCase();
-  w = w.replace(/^[^A-Za-z0-9áéíóúüñÁÉÍÓÚÜÑ]+|[^A-Za-z0-9áéíóúüñÁÉÍÓÚÜÑ]+$/g, "");
-  return w;
-}
-
 // función que recibe un texto string grande y devuelve un array de palabras lematizadas y sin stopwords, y normalizadas
 export function processText(text: string): string[] {
 	if (!text) return [];
@@ -86,5 +79,3 @@ export function processText(text: string): string[] {
 
 	return out;
 }
-
-export default processText;

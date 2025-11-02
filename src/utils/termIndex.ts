@@ -2,26 +2,6 @@
  * Utilities to build a simple term index / term-frequency vector from a document
  */
 
-import { CLEAN_WORD_REGEX } from '@/constants'
-
-/** Resultado por término */
-export interface TermInfo {
-  /** índice de la primera aparición en el vector original */
-  index: number;
-  /** término normalizado */
-  term: string;
-  /** TF = count */
-  tf: number;
-}
-
-/** Normaliza una palabra: trim + lowercase + quitar puntuación inicial/ final */
-function normalize(word: string): string {
-  if (!word) return word;
-  let w = word.trim().toLowerCase();
-  w = w.replace(CLEAN_WORD_REGEX, "");
-  return w;
-}
-
 /**
  * Dado un vector de strings (documento tokenizado), calcula para cada término:
  * - índice de la primera aparición

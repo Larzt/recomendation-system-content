@@ -5,6 +5,15 @@ declare global {
     content: string | string[];
   }
 
+  interface TermInfo {
+    /** índice de la primera aparición en el vector original */
+    index: number;
+    /** término normalizado */
+    term: string;
+    /** TF = count */
+    tf: number;
+  }
+
 }
 
 export {}

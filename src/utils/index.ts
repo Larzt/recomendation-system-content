@@ -1,1 +1,2 @@
-export { directoriesFilesToIFile, fileToIFile } from './fileConvertors.ts'
+export { directoriesFilesToIFile, fileToIFile, parseIFileToRecord } from './fileConvertors.ts'
+export { normalize } from './normalize.ts'

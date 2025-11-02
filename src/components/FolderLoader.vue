@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useFilesStore } from '@/stores'
 import { directoriesFilesToIFile } from '@/utils'
-import { processText } from '@/utils/processText'
+import { processText } from '@/algorithms'
 
 const store = useFilesStore()
 const selectedFileContent = ref<string>('')

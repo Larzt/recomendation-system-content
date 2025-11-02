@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useFilesStore } from '@/stores'
-import { directoriesFilesToIFile, fileToIFile } from '@/utils'
+import { fileToIFile } from '@/utils'
 
 const store = useFilesStore()
-const selectedCorpusContent = ref<string>('')
 
 async function handleCorpus(event: Event | DragEvent) {
   let file: File | null = null
