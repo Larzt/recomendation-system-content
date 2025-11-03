@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { processStopWords, processText } from '@/algorithms'
 import { parseIFileToRecord } from '@/utils'
+
 export const useFilesStore = defineStore('files', {
   state: () => ({
     documents: [] as IFile[],

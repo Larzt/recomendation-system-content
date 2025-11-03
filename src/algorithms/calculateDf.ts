@@ -1,4 +1,5 @@
 import { useFilesStore } from "@/stores";
+
 export function calculateDf(term: string): number {
   if (!term) return 0;
   const filesStore = useFilesStore();

@@ -9,21 +9,7 @@ import { normalize } from '@/utils'
 
 // Mapa de ejemplo. En producción puedes cargar un fichero JSON más completo.
 // TODO: cargar desde un archivo externo, y guardar las lemas en un vector global o en el store
-const LEMMAS: Record<string, string> = {
-	"áfrica": "áfrica",
-	"ángela": "ángela",
-	"ábaco": "ábaco",
-	"ábrelo": "abrir",
-	"ábreme": "abrir",
-	"ábside": "ábside",
-	"ácana": "ácana",
-	"ácaro": "ácaro",
-	"ácido": "ácido",
-	"ácigos": "ácigos",
-	"ácimo": "ácimo",
-	"ácoro": "ácoro",
-	"ácrata": "ácrata"
-};
+const LEMMAS = useFilesStore().corpus as Record<string, string>;
 
 /**
  * Devuelve la forma lematizada de una palabra si existe en el mapeo.
