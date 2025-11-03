@@ -1,18 +1,5 @@
-import processText from './processText'
-import { computeTermFrequencies } from './termIndex'
-import { calculateIdf } from '@/algorithms'
-
-/**
- * Registro por fila de la matriz de términos
- */
-export interface TermMatrixRow {
-  index: number;
-  term: string;
-  tf: number;
-  idf: number;
-  tfidf: number;
-}
-
+import { computeTermFrequencies } from './computeTermFrequencies.ts'
+import { calculateIdf, processText } from '@/algorithms'
 
 export function buildTermMatrix(file: any): TermMatrixRow[] {
   if (!file) return [];
@@ -43,5 +30,3 @@ export function buildTermMatrix(file: any): TermMatrixRow[] {
   rows.sort((a, b) => b.tf - a.tf)
   return rows
 }
-
-export default buildTermMatrix

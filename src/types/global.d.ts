@@ -14,6 +14,16 @@ declare global {
     tf: number;
   }
 
+  /**
+   * Registro por fila de la matriz de términos
+   */
+  interface TermMatrixRow {
+    index: number;
+    term: string;
+    tf: number;
+    idf: number;
+    tfidf: number;
+  }
 }
 
 export {}
