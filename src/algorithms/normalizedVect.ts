@@ -4,12 +4,14 @@ import { calculateIdf } from "./calculateIdf";
 
 // IDF de los textos (al final es 1 por articulo), para que no se esté calculando todo el rato
 // deberiamos de tener una variable donde se almacenen todos los
-const idfs: Record<string, number> = {};
+//const idfs: Record<string, number> = {};
 
 // matriz que tiene los df en función item-articulo
-const dfMatrix: Record<string, Record<string, number>> = {};
+//const dfMatrix: Record<string, Record<string, number>> = {};
 
-const vectorLengths: Record<string, number> = {};
+// const vectorLengths: Record<string, number> = {};
+
+//const tfIdfMatrix: Record<string, Record<string, number>> = {};
 
 
 // const filesStore = useFilesStore();
@@ -22,7 +24,7 @@ const vectorLengths: Record<string, number> = {};
 
 
 
-export function tf_x_idf ( dfMatrix: Record<string, Record<string, number>>): Record<string, Record<string, number>> {
+export function tf_x_idf ( dfMatrix: Record<string, Record<string, number>>, idfs: Record<string, number>): Record<string, Record<string, number>> {
   const tfIdfMatrix: Record<string, Record<string, number>> = {};
 
   for (const term in dfMatrix) {
@@ -43,7 +45,7 @@ export function tf_x_idf ( dfMatrix: Record<string, Record<string, number>>): Re
 }
 
 // funcion de longitud de vector normalizado
-export function normalizedVectorLength(tfIdfMatrix: Record<string, Record<string, number>>): Record<string, number> {
+export function normalizedVectorLength(tfIdfMatrix: Record<string, Record<string, number>>, vectorLengths: Record<string, number>): Record<string, number> {
 
   for (const term in tfIdfMatrix) {
     let sumOfSquares = 0;
