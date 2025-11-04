@@ -1,13 +1,6 @@
 import { useFilesStore } from '@/stores'
 import { similarityArticles } from './similarityArticles'
 
-/** Resultado de una comparación entre dos documentos */
-export interface SimilarityResult {
-	docA: string
-	docB: string
-	similarity: number
-}
-
 /**
  * Recorre `termMatrices` del store y calcula la similaridad entre
  * cada par de documentos (pares únicos i < j). Devuelve un array de
@@ -33,9 +26,11 @@ export function similarityAll(): SimilarityResult[] {
 			const vecB = termMatrices[nameB] || []
 
 			const sim = similarityArticles(vecA, vecB)
+      console.log("Similitudes vecA, vecB: ", sim)
 			results.push({ docA: nameA, docB: nameB, similarity: sim })
 		}
 	}
 
+  console.log("Similitudes result: ", results)
 	return results
 }

@@ -24,6 +24,13 @@ declare global {
     idf: number;
     tfidf: number;
   }
+
+  /** Resultado de una comparación entre dos documentos */
+  interface SimilarityResult {
+    docA: string
+    docB: string
+    similarity: number
+  }
 }
 
 export {}

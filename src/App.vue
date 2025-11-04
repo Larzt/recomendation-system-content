@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FolderLoader, StopWordsLoader, CorpusLoader, Header, MatrixViewer } from '@/components'
+import { FolderLoader, StopWordsLoader, CorpusLoader, Header, Viewers } from '@/components'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import { FolderLoader, StopWordsLoader, CorpusLoader, Header, MatrixViewer } fro
     <StopWordsLoader />
     <CorpusLoader />
   </div>
-  <MatrixViewer />
+  <Viewers />
 </template>
 
 <style lang="scss">
@@ -24,7 +24,7 @@ html, body {
   align-items: center;
   gap: 2rem;
 
-  height: 100vh;
+  height: 50vh;
   width: 100vw;
 }
 </style>
