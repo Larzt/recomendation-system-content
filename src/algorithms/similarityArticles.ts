@@ -1,36 +1,26 @@
 import { useFilesStore } from "@/stores";
 import { calculateIdf } from "./calculateIdf";
+import { normalizedVect } from "./normalizedVect";
 
-const normalizedMatrix : Record<string, Record<string, number>> = {};
-
-export function similarityArticles( normalizedMatrix: Record<string, Record<string, number>>): Record<string, Record<string, number>> {
-  // matriz que tendra la similitud entre articulos
-  const similarityMatrix: Record<string, Record<string, number>> = {};
-
-  const filesStore = useFilesStore();
-  const totalDocuments = filesStore.documents.length;
-
-  // En normalizedMatrix ya tenemos los tf-idf normalizados (es decir, los vectores normalizados)
-
-  for (let i = 0; i < totalDocuments; i++) {
-    const docA = filesStore.documents[i];
-    similarityMatrix[docA.name] = {};
-
-    for (let j = 0; j < totalDocuments; j++) {
-      const docB = filesStore.documents[j];
-
-      let dotProduct = 0;
-
-      for (const term in normalizedMatrix) {
-        const tfIdfA = normalizedMatrix[term][docA.name] || 0;
-        const tfIdfB = normalizedMatrix[term][docB.name] || 0;
-        dotProduct += tfIdfA * tfIdfB;
-      }
-
-      similarityMatrix[docA.name][docB.name] = dotProduct;
+//  función para multiplicar dos vectores de termMatrixRow, multiplicando solo los TFIDF
+function dotProduct(vect1: TermMatrixRow[], vect2: TermMatrixRow[]): number {
+  let product = 0;
+  for (const item1 of vect1) {
+    const item2 = vect2.find(item => item.term === item1.term);
+    if (item2) {
+      product += item1.tfidf * item2.tfidf;
     }
   }
-
-  return similarityMatrix;
-
+  return product;
 }
+
+export function similarityArticles( vect1: TermMatrixRow[], vect2: TermMatrixRow[] ): number {
+  const vect1Norm = normalizedVect(vect1);
+  const vect2Norm = normalizedVect(vect2);
+  const numProduct = dotProduct(vect1Norm, vect2Norm);
+  const denomProduct = dotProduct(vect1Norm, vect2Norm);
+  if (denomProduct === 0) return 0;
+  return numProduct / denomProduct;
+}
+
+
