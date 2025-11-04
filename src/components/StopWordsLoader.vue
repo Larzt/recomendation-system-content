@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useFilesStore } from '@/stores'
 import { fileToIFile } from '@/utils'
+import { ref } from 'vue'
 
 const store = useFilesStore()
+const fileName = ref<string | null>(null)
 
 async function handleStopWords(event: Event | DragEvent) {
   let file: File | null = null
@@ -17,6 +19,7 @@ async function handleStopWords(event: Event | DragEvent) {
 
   const converted: IFile = await fileToIFile(file)
   store.setStopWords(converted)
+  fileName.value = converted.name
 }
 </script>
 
@@ -32,8 +35,8 @@ async function handleStopWords(event: Event | DragEvent) {
         <input type="file" accept=".txt,.csv" @change="handleStopWords" />
       </label>
     </div>
-    <h3 v-if="store.stopWords.name" class="subtitle">
-      Archivo subido: {{ store.stopWords.name }}
+    <h3 v-if="fileName" class="subtitle">
+      Archivo subido: {{ fileName }}
     </h3>
     <div v-else class="empty">
       <p>No se ha cargado ninguna carpeta aún.</p>

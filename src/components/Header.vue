@@ -24,9 +24,8 @@ function applyTheme() {
 
 // --- Cambio de idioma ---
 const languages = [
-  { label: '🇪🇸 Español', value: 'es' },
-  { label: '🇬🇧 English', value: 'en' },
-  { label: '🇫🇷 Français', value: 'fr' },
+  { label: 'Español', value: 'es' },
+  { label: 'English', value: 'en' },
 ]
 
 function changeLanguage(lang: string) {
@@ -80,7 +79,7 @@ function changeLanguage(lang: string) {
   }
 
   select {
-    border: 1px solid $border;
+    border: 1px solid var(--border);
     border-radius: 0.5rem;
     padding: 0.35rem 0.5rem;
     font-size: 0.9rem;

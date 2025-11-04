@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FolderLoader, StopWordsLoader, CorpusLoader, Header } from '@/components'
+import { FolderLoader, StopWordsLoader, CorpusLoader, Header, MatrixViewer } from '@/components'
 </script>
 
 <template>
@@ -9,11 +9,12 @@ import { FolderLoader, StopWordsLoader, CorpusLoader, Header } from '@/component
     <StopWordsLoader />
     <CorpusLoader />
   </div>
+  <MatrixViewer />
 </template>
 
 <style lang="scss">
 html, body {
-  background-color: $bg-dark;
+  background-color: var(--bg);
 }
 
 .uploader-container {

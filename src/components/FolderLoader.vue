@@ -41,21 +41,11 @@ function readFile(file: IFile) {
     </div>
 
     <h3 v-if="store.documents.length" class="files-title">
-      Archivos encontrados ({{ store.documents.length }}):
+      Archivos encontrados: {{ store.documents.length }}
     </h3>
-    <ul v-if="store.documents.length">
-      <li v-for="file in store.documents" :key="file.name">
-        <button @click="readFile(file)">{{ file.name }}</button>
-      </li>
-    </ul>
 
     <div v-else class="empty">
       <p>No se ha cargado ninguna carpeta aún.</p>
-    </div>
-
-    <div v-if="selectedFileContent">
-      <h3>📄 Contenido del archivo:</h3>
-      <pre>{{ selectedFileContent }}</pre>
     </div>
   </div>
 </template>

@@ -4,6 +4,7 @@ import { useFilesStore } from '@/stores'
 import { fileToIFile } from '@/utils'
 
 const store = useFilesStore()
+const fileName = ref<string | null>(null)
 
 async function handleCorpus(event: Event | DragEvent) {
   let file: File | null = null
@@ -18,6 +19,7 @@ async function handleCorpus(event: Event | DragEvent) {
 
   const converted: IFile = await fileToIFile(file)
   store.setCorpus(converted)
+  fileName.value = converted.name
 }
 
 </script>
@@ -34,8 +36,8 @@ async function handleCorpus(event: Event | DragEvent) {
         <input type="file" accept=".txt,.csv,.json" @change="handleCorpus" />
       </label>
     </div>
-    <h3 v-if="store.corpus.name" class="subtitle">
-      Archivo subido: {{ store.corpus.name }}
+    <h3 v-if="fileName" class="subtitle">
+      Archivo subido: {{ fileName }}
     </h3>
     <div v-else class="empty">
       <p>No se ha cargado ninguna carpeta aún.</p>

@@ -1,15 +1,37 @@
-$primary: #2563eb;
-$primary-darken: #2563EBFF;
-$primary-lighten: #F9FAFBFF;
-$primary-light: #c7d2fe;
-$primary-bg: #eef2ff;
+/* --- Paleta global adaptable --- */
+:global(:root[data-theme='light']) {
+  --primary: #2563eb;
+  --primary-darken: #2563EBFF;
+  --primary-lighten: #F9FAFBFF;
+  --primary-light: #c7d2fe;
+  --primary-bg: #eef2ff;
 
-$bg-dark: #080610;
-$bg-light: #f9fafb;
-$text: #333;
-$border: #e5e7eb;
-$heading: #1f2937;
-$content: #e0eeff;
+  --bg: #f9fafb;
+  --text: #333;
+  --text-white: #000;
+  --border: #e5e7eb;
+  --heading: #1f2937;
+  --content: #e0eeff;
 
-$shadow-light: rgba(0, 0, 0, 0.05);
-$shadow-hover: rgba(0, 0, 0, 0.08);
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --shadow-hover: rgba(0, 0, 0, 0.08);
+}
+
+/* --- Tema oscuro --- */
+:global(:root[data-theme='dark']) {
+  --primary: #3b82f6; /* un poco más brillante en oscuro */
+  --primary-darken: #60a5fa;
+  --primary-lighten: #1e293b;
+  --primary-light: #334155;
+  --primary-bg: #0f172a;
+
+  --bg: #080610;
+  --text: #f9fafb;
+  --text-white: #fff;
+  --border: #333;
+  --heading: #f3f4f6;
+  --content: #1e293b;
+
+  --shadow-light: rgba(255, 255, 255, 0.05);
+  --shadow-hover: rgba(255, 255, 255, 0.08);
+}

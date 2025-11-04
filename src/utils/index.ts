@@ -1,4 +1,5 @@
 export { directoriesFilesToIFile, fileToIFile, parseIFileToRecord } from './fileConvertors.ts'
-export { normalize } from './normalize.ts'
+export { normalizeText } from './normalizeText.ts'
+export { normalizeVector } from './normalizeVector.ts'
 export { computeTermFrequencies } from './computeTermFrequencies.ts'
 export { buildTermMatrix } from './buildTermMatrix.ts'

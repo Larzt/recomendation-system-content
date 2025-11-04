@@ -5,11 +5,10 @@
  */
 
 import { useFilesStore } from "@/stores";
-import { normalize } from '@/utils'
+import { normalizeText } from '@/utils'
 
 // Mapa de ejemplo. En producción puedes cargar un fichero JSON más completo.
 // TODO: cargar desde un archivo externo, y guardar las lemas en un vector global o en el store
-const LEMMAS = useFilesStore().corpus as Record<string, string>;
 
 /**
  * Devuelve la forma lematizada de una palabra si existe en el mapeo.
@@ -19,6 +18,7 @@ const LEMMAS = useFilesStore().corpus as Record<string, string>;
  */
 export function lematize(word: string): string {
 	if (word === undefined || word === null || word === "") return word;
+  const LEMMAS = useFilesStore().corpus as Record<string, string>;
 	return LEMMAS[word] ?? word;
 }
 
@@ -48,7 +48,7 @@ export function processText(text: string): string[] {
 	for (const raw of tokens) {
 		if (!raw) continue;
 		// normalizar (trim, lowercase, quitar puntuación al inicio/fin)
-		const norm = normalize(raw);
+		const norm = normalizeText(raw);
 		if (!norm) continue;
 
 		// verificar que siga siendo una sola "palabra" (sin espacios ni símbolos internos)
